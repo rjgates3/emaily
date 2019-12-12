@@ -20,6 +20,10 @@ module.exports = app => {
   });
 
   app.get('/api/current_user', (req, res) => {
+    /*
+    // info added to req.session from cookieSession
+    res.send(req.session); 
+    */
     res.send(req.user);
   });
 };
