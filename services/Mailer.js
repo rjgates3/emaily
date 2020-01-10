@@ -42,7 +42,14 @@ class Mailer extends helper.Mail {
   }
 
   async send() {
-    const request = this.sgAPI
+    const request = this.sgAPI.emptyRequest({
+        method: 'POST',
+        path: '/v3/mail/send',
+        body: this.toJSON() // toJSON is defined by Mail base class
+    });
+
+    const response = this.sgAPI.API(request); // API is proviced by sendgrid api
+    return response;
   }
 }
 
